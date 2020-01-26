@@ -1,0 +1,9 @@
+sudo: required
+services: 
+  - docker
+
+before_install: 
+  - docker build -t jesimage -f Dockerfile.dev .
+
+script: 
+  - docker run -e CI=true jesimage npm run test -- --coverage
